@@ -4,7 +4,7 @@ var myServices = angular.module('myServices', ['ngResource']);
 
 myServices.factory('Student', ['$resource',
     function($resource) {
-        return $resource('students/:id', {}, {
+        return $resource('users/:id', {}, {
             query: {method: 'GET', isArray: true},
             get: {method: 'GET', isArray: false},
             insert: {method: 'POST', isArray: false},
