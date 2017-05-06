@@ -21,7 +21,7 @@ public class UserController {
     UserRoleService userRoleService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List getAllUsers() {
+    public List getAllUser() {
         return userService.getAllUser();
     }
 
