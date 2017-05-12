@@ -7,18 +7,14 @@
 //import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 //import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 //
-//@Configuration
 //@EnableWebSecurity
+//@Configuration
 //public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
-//        http.authorizeRequests().antMatchers("/", "/users", "/students.html", "/role").permitAll().anyRequest().authenticated();
-//    }
-//
-//    @Autowired
-//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth
-//                .inMemoryAuthentication().withUser("user").password("password").roles("USER");
+//        http.authorizeRequests().anyRequest().fullyAuthenticated().and().
+//                httpBasic().and().
+//                csrf().disable();
 //    }
 //}
