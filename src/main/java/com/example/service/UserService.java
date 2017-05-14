@@ -5,6 +5,7 @@ import com.example.model.UserRole;
 import com.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,8 +22,8 @@ public class UserService {
         List<User> users = userRepository.findAll();
         List<Map> models = new ArrayList<>();
         String role;
-        for (User user: users) {
-            Map<String,Object> model = new HashMap<>();
+        for (User user : users) {
+            Map<String, Object> model = new HashMap<>();
             model.put("id", user.getUserId());
             model.put("email", user.getEmail());
             model.put("code", user.getCode());
@@ -73,7 +74,19 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User findByFirstName(String firstName) {
-        return userRepository.findByFirstName(firstName);
+    public HashMap findByFirstName(HashMap loginModel) {
+        HashMap model = new HashMap();
+        User user = userRepository.findByEmail(loginModel.get("email").toString());
+        if (user != null) {
+            if (loginModel.get("password").toString().equals(user.getPassword())) {
+                model.put("message", "Success");
+            } else {
+                model.put("message", "Wrong password");
+            }
+            return model;
+        } else {
+            model.put("message", "User not found");
+            return model;
+        }
     }
 }

@@ -5,9 +5,11 @@ import com.example.model.UserRole;
 import com.example.service.UserRoleService;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -31,10 +33,14 @@ public class UserController {
         return userService.getUser(id);
     }
 
+    @RequestMapping(value = "login", method = RequestMethod.POST)
+    public HashMap userLogin(@RequestBody HashMap model) {
+        return userService.findByFirstName(model);
+//        return (String) model.get("password");
+    }
+
     @RequestMapping(value = "", method = RequestMethod.POST)
     public User addUser(@RequestBody User user) {
-//        UserRole userRole = userRoleService.getOneUserRole(user.getUserRoleId());
-//        user.setUserRole(userRole);
         userService.addUser(user);
         return user;
     }
