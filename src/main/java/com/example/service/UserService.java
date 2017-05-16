@@ -79,13 +79,13 @@ public class UserService {
         User user = userRepository.findByEmail(loginModel.get("email").toString());
         if (user != null) {
             if (loginModel.get("password").toString().equals(user.getPassword())) {
-                model.put("message", "Success");
+                model.put("msg", "Success");
             } else {
-                model.put("message", "Wrong password");
+                model.put("msg", "Wrong password");
             }
             return model;
         } else {
-            model.put("message", "User not found");
+            model.put("msg", "User not found");
             return model;
         }
     }
