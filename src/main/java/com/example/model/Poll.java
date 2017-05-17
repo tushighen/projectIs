@@ -21,8 +21,8 @@ public class Poll {
     private Date createdDate;
     @Null
     private Date modifiedDate;
-    @NotNull
-    private int createdBy;
+//    @NotNull
+//    private int createdBy;
     @NotNull
     private Boolean isActive;
 
@@ -34,10 +34,12 @@ public class Poll {
 
     @OneToOne(mappedBy = "poll", cascade = CascadeType.ALL)
     @JsonBackReference(value = "poll")
+    @Null
     private PollRole pollRole;
 
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
     @JsonBackReference(value = "pollQuestion")
+    @Null
     private Set<Question> questions;
 
     public int getPollId() {
@@ -72,13 +74,13 @@ public class Poll {
         this.modifiedDate = modifiedDate;
     }
 
-    public int getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(int createdBy) {
-        this.createdBy = createdBy;
-    }
+//    public int getCreatedBy() {
+//        return createdBy;
+//    }
+//
+//    public void setCreatedBy(int createdBy) {
+//        this.createdBy = createdBy;
+//    }
 
     public Boolean getActive() {
         return isActive;

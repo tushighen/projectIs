@@ -53,6 +53,10 @@ public class UserService {
         return models;
     }
 
+    public List getAllUsers() {
+        return userRepository.findAll();
+    }
+
     public User getUser(int id) {
         User user = userRepository.findOne(id);
         return user;

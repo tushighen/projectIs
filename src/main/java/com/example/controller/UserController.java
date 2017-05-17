@@ -28,6 +28,12 @@ public class UserController {
         return userService.getAllUser();
     }
 
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public List getAllUsers() {
+        return userService.getAllUsers();
+
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUser(@PathVariable("id") int id) {
         return userService.getUser(id);
