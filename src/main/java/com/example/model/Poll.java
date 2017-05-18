@@ -2,10 +2,12 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Set;
 
@@ -41,6 +43,9 @@ public class Poll {
     @JsonBackReference(value = "pollQuestion")
     @Null
     private Set<Question> questions;
+
+    @Transient
+    private ArrayList<Integer> userRoleId;
 
     public int getPollId() {
         return pollId;
@@ -112,5 +117,13 @@ public class Poll {
 
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    public ArrayList<Integer> getUserRoleId() {
+        return userRoleId;
+    }
+
+    public void setUserRoleId(ArrayList<Integer> userRoleId) {
+        this.userRoleId = userRoleId;
     }
 }

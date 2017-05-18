@@ -9,7 +9,9 @@ import com.example.service.PollService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -29,9 +31,20 @@ public class PollController {
     }
 
 //    Санал асуулга нэмэх
+//    {
+//        "pollName": "HAHAH",
+//            "createdDate": -5359420800000,
+//            "modifiedDate": null,
+//            "active": true,
+//            "user": {
+//        "userId": 3
+//    },
+//        "userRoleId": [1, 2, 3]
+//    }
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public int addPoll(@RequestBody Poll poll) {
-        return pollService.addPoll(poll).getPollId();
-//        return poll.getPollId();
+    public void addPoll(@RequestBody Poll newPoll) {
+        Poll poll = pollService.addPoll(newPoll);
+        ArrayList<Integer> userRoles = newPoll.getUserRoleId();
+        pollRoleService.addPolRole(poll, userRoles);
     }
 }
