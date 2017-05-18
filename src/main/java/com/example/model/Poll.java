@@ -30,8 +30,7 @@ public class Poll {
     @Null
     @Column
     private Date modifiedDate;
-//    @NotNull
-//    private int createdBy;
+
     @NotNull
     @Column(nullable = false)
     private Boolean isActive;
@@ -86,14 +85,6 @@ public class Poll {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
-
-//    public int getCreatedBy() {
-//        return createdBy;
-//    }
-//
-//    public void setCreatedBy(int createdBy) {
-//        this.createdBy = createdBy;
-//    }
 
     public Boolean getActive() {
         return isActive;
