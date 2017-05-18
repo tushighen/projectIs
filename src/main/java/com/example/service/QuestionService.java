@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.example.model.Question;
 import com.example.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,5 +15,9 @@ public class QuestionService {
 
     public List getAllQuestion() {
         return questionRepository.findAll();
+    }
+
+    public List addQuestions(List<Question> questions) {
+        return questionRepository.save(questions);
     }
 }

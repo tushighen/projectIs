@@ -22,7 +22,6 @@ public class QuestionController {
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public List addQuestions(@RequestBody List<Question> questions) {
-
-        return questions;
+        return questionService.addQuestions(questions);
     }
 }

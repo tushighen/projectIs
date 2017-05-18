@@ -13,7 +13,9 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int userRoleId;
+
     @NotNull
+    @Column(nullable = false)
     private String roleName;
 
     @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)

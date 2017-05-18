@@ -14,19 +14,33 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private int userId;
+
     @NotNull
+    @Column(nullable = false)
     private String email;
+
+    @Column
     private String code;
     @NotNull
+    @Column(nullable = false)
     private String firstName;
+
     @NotNull
+    @Column(nullable = false)
     private String lastName;
+
     @NotNull
+    @Column(nullable = false)
     private Date dateOfBirth;
+
     @NotNull
+    @Column(nullable = false)
     private String sex;
+
     @NotNull
+    @Column(nullable = false)
     private String password;
 
     @ManyToOne

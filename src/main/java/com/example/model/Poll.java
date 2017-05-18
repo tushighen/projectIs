@@ -16,12 +16,19 @@ public class Poll {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private int pollId;
+
     @NotNull
+    @Column(nullable = false)
     private String pollName;
+
     @NotNull
+    @Column(nullable = false)
     private Date createdDate;
+
     @Null
+    @Column(nullable = false)
     private Date modifiedDate;
 //    @NotNull
 //    private int createdBy;

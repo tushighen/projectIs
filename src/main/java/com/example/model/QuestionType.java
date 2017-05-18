@@ -13,7 +13,9 @@ public class QuestionType {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int questionTypeId;
+
     @NotNull
+    @Column(nullable = false)
     private String typeName;
 
     @OneToMany(mappedBy = "questionType", cascade = CascadeType.ALL)

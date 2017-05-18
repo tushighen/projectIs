@@ -11,6 +11,7 @@ public class PollRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private int pollRoleId;
 
     @OneToOne

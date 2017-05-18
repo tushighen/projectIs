@@ -16,7 +16,9 @@ public class Question {
     private int questionId;
     @NotNull
     private String questionName;
+
     @Null
+    @Column
     private String questionDescription;
 
     @ManyToOne

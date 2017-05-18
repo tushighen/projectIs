@@ -11,7 +11,11 @@ public class OptionChoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private int optionChoiceId;
+
+    @NotNull
+    @Column(nullable = false)
     private String choiceName;
 
     @ManyToOne
