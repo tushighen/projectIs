@@ -16,7 +16,7 @@ public class Poll {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false)
+    @Column
     private int pollId;
 
     @NotNull
@@ -28,11 +28,12 @@ public class Poll {
     private Date createdDate;
 
     @Null
-    @Column(nullable = false)
+    @Column
     private Date modifiedDate;
 //    @NotNull
 //    private int createdBy;
     @NotNull
+    @Column(nullable = false)
     private Boolean isActive;
 
     @ManyToOne
