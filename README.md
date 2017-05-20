@@ -39,6 +39,30 @@
                    "choiceName":"option 4"
                 }
              ]
+          },
+          {  
+             "questionName":"New Question 2",
+             "questionDescription":"Hello this is new question 2",
+             "poll":{  
+                "pollId":1
+             },
+             "questionType":{  
+                "questionTypeId":1
+             },
+             "optionChoices":[  
+                {  
+                   "choiceName":"option 1"
+                },
+                {  
+                   "choiceName":"option 2"
+                },
+                {  
+                   "choiceName":"option 3"
+                },
+                {  
+                   "choiceName":"option 4"
+                }
+             ]
           }
        ]
     }
