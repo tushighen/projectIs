@@ -1,6 +1,6 @@
 # projectIs
 
-# add new Poll Request - localhost:8080/api/polls (POST)
+### add new Poll Request - localhost:8080/api/polls (POST)
 
 {
 
