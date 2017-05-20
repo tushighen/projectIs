@@ -7,7 +7,7 @@
        "password":"example"
     }
 
-## add new User Request Example - localhost:8080/api/users (method = POST)
+## _add new User Request Example - localhost:8080/api/users (method = POST)_
 
     {  
        "email":"example@example.com",
@@ -22,7 +22,7 @@
        }
     }
 
-## add new Poll Request Example - localhost:8080/api/polls (method = POST)
+## _add new Poll Request Example - localhost:8080/api/polls (method = POST)_
 
     {  
        "pollName":"New Poll",
