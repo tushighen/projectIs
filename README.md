@@ -17,8 +17,8 @@
        ],
        "questions":[  
           {  
-             "questionName":"helloWorld",
-             "questionDescription":"HelloWorld 1",
+             "questionName":"New Question",
+             "questionDescription":"Hello this is new question",
              "poll":{  
                 "pollId":1
              },
@@ -27,16 +27,16 @@
              },
              "optionChoices":[  
                 {  
-                   "choiceName":"helloworld A"
+                   "choiceName":"option 1"
                 },
                 {  
-                   "choiceName":"helloworld B"
+                   "choiceName":"option 2"
                 },
                 {  
-                   "choiceName":"helloworld c"
+                   "choiceName":"option 3"
                 },
                 {  
-                   "choiceName":"helloworld D"
+                   "choiceName":"option 4"
                 }
              ]
           }
