@@ -1,4 +1,11 @@
-# projectIs
+# projectIS
+
+### Login Request Example - localhost:8080/api/users/login (method = POST)
+
+    {  
+       "email":"example@example.com",
+       "password":"example"
+    }
 
 ### add new User Request Example - localhost:8080/api/users (method = POST)
 

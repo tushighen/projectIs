@@ -42,7 +42,6 @@ public class UserController {
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public HashMap userLogin(@RequestBody HashMap model) {
         return userService.findByFirstName(model);
-//        return (String) model.get("password");
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
