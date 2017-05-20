@@ -1,11 +1,9 @@
 package com.example.controller;
 
-import com.example.model.Poll;
-import com.example.model.PollRole;
-import com.example.model.User;
-import com.example.model.UserRole;
+import com.example.model.*;
 import com.example.service.PollRoleService;
 import com.example.service.PollService;
+import com.example.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +21,8 @@ public class PollController {
     PollService pollService;
     @Autowired
     PollRoleService pollRoleService;
+    @Autowired
+    QuestionService questionService;
 
 //    Хэрэглэгчийн Role-оос шалтгаалж санал асуулгыг авах
     @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
@@ -42,9 +42,11 @@ public class PollController {
 //        "userRoleId": [1, 2, 3]
 //    }
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public void addPoll(@RequestBody Poll newPoll) {
+    public List<Question> addPoll(@RequestBody Poll newPoll) {
         Poll poll = pollService.addPoll(newPoll);
         ArrayList<Integer> userRoles = newPoll.getUserRoleId();
         pollRoleService.addPolRole(poll, userRoles);
+        questionService.addQuestionss(newPoll.getQuestions(), poll.getPollId());
+        return newPoll.getQuestions();
     }
 }

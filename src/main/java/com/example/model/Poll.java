@@ -1,6 +1,7 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jdk.nashorn.internal.ir.annotations.Ignore;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -47,11 +49,12 @@ public class Poll {
     private PollRole pollRole;
 
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "pollQuestion")
-    @Null
-    private Set<Question> questions;
+    @JsonManagedReference(value = "pollQuestion")
+    @Transient
+    private List<Question> questions;
 
     @Transient
+//    @JsonIgnore
     private ArrayList<Integer> userRoleId;
 
     public int getPollId() {
@@ -110,11 +113,11 @@ public class Poll {
         this.pollRole = pollRole;
     }
 
-    public Set<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 

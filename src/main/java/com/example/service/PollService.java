@@ -5,6 +5,7 @@ import com.example.model.PollRole;
 import com.example.model.UserRole;
 import com.example.repository.PollRepository;
 import com.example.repository.PollRoleRepository;
+import com.example.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,8 @@ public class PollService {
     PollRepository pollRepository;
     @Autowired
     PollRoleRepository pollRoleRepository;
+    @Autowired
+    QuestionRepository questionRepository;
 
     public List getlAllPoll() {
         return pollRepository.findAll();
@@ -33,6 +36,7 @@ public class PollService {
         List<Poll> polls = new ArrayList<>();
         for (int i = 0; i < pollRoles.size(); i++) {
             polls.add(pollRoles.get(i).getPoll());
+            polls.get(i).setQuestions(questionRepository.findByPoll(pollRoles.get(i).getPoll()));
         }
         return polls;
     }

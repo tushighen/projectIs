@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,10 +15,10 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int questionId;
+
     @NotNull
     private String questionName;
 
-    @Null
     @Column
     private String questionDescription;
 
@@ -35,7 +36,7 @@ public class Question {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "questionOptionChoice")
-    private Set<OptionChoice> optionChoices;
+    private List<OptionChoice> optionChoices;
 
     public int getQuestionId() {
         return questionId;
@@ -77,11 +78,11 @@ public class Question {
         this.questionType = questionType;
     }
 
-    public Set<OptionChoice> getOptionChoices() {
+    public List<OptionChoice> getOptionChoices() {
         return optionChoices;
     }
 
-    public void setOptionChoices(Set<OptionChoice> optionChoices) {
+    public void setOptionChoices(List<OptionChoice> optionChoices) {
         this.optionChoices = optionChoices;
     }
 }
