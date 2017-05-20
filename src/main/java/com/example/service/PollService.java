@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.model.Poll;
 import com.example.model.PollRole;
+import com.example.model.Question;
 import com.example.model.UserRole;
 import com.example.repository.PollRepository;
 import com.example.repository.PollRoleRepository;
@@ -34,9 +35,14 @@ public class PollService {
         userRole.setUserRoleId(id);
         List<PollRole> pollRoles = pollRoleRepository.findByUserRole(userRole);
         List<Poll> polls = new ArrayList<>();
+        List<Question> questions = new ArrayList<>();
         for (int i = 0; i < pollRoles.size(); i++) {
             polls.add(pollRoles.get(i).getPoll());
-            polls.get(i).setQuestions(questionRepository.findByPoll(pollRoles.get(i).getPoll()));
+            questions = questionRepository.findByPoll(pollRoles.get(i).getPoll());
+            for (int j = 0; j < questions.size(); j++) {
+                questions.get(j).setType(questions.get(j).getQuestionType().getTypeName());
+            }
+            polls.get(i).setQuestions(questions);
         }
         return polls;
     }

@@ -38,6 +38,10 @@ public class Question {
     @JsonManagedReference(value = "questionOptionChoice")
     private List<OptionChoice> optionChoices;
 
+    @Transient
+    @Null
+    private String type;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -84,5 +88,13 @@ public class Question {
 
     public void setOptionChoices(List<OptionChoice> optionChoices) {
         this.optionChoices = optionChoices;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
