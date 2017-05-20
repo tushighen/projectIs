@@ -20,7 +20,7 @@
        "userRole":{  
           "userRoleId":1 
        }
-}
+    }
 
 ### add new Poll Request Example - localhost:8080/api/polls (method = POST)
 
