@@ -1,9 +1,10 @@
 # projectIs
 
-//add new Poll Request - localhost:8080/api/polls (POST)
+# add new Poll Request - localhost:8080/api/polls (POST)
 
 {
-	"pollName": "New Poll",
+
+    "pollName": "New Poll",
 	"createdDate": -5359420800000,
 	"modifiedDate": null,
 	"active": true,
@@ -21,8 +22,7 @@
     "questionType": {
     	"questionTypeId": 1
     	},
-    "optionChoices" : [
-    	{
+    "optionChoices" : [{
     		"choiceName": "helloworld A"
     	},
     	{
@@ -35,6 +35,5 @@
     		"choiceName": "helloworld D"
     	}
     	]
-	}
-]
+	}]
 }

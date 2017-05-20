@@ -31,16 +31,6 @@ public class PollController {
     }
 
 //    Санал асуулга нэмэх
-//    {
-//        "pollName": "HAHAH",
-//            "createdDate": -5359420800000,
-//            "modifiedDate": null,
-//            "active": true,
-//            "user": {
-//        "userId": 3
-//    },
-//        "userRoleId": [1, 2, 3]
-//    }
     @RequestMapping(value = "", method = RequestMethod.POST)
     public List<Question> addPoll(@RequestBody Poll newPoll) {
         Poll poll = pollService.addPoll(newPoll);
