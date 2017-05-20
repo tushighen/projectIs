@@ -1,6 +1,21 @@
 # projectIs
 
-### add new Poll Request Example - localhost:8080/api/polls (POST)
+### add new User Request Example - localhost:8080/api/users (method = POST)
+
+    {  
+       "email":"example@example.com",
+       "code":"B0000000",
+       "firstName":"firstname",
+       "lastName":"lastName",
+       "dateOfBirth":1900-03-03,
+       "sex":"sex",
+       "password":"password",
+       "userRole":{  
+          "userRoleId":1 
+       }
+}
+
+### add new Poll Request Example - localhost:8080/api/polls (method = POST)
 
     {  
        "pollName":"New Poll",
