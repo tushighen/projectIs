@@ -21,18 +21,6 @@ public class QuestionController {
         return questionService.getAllQuestion();
     }
 
-//    [
-//    {
-//        "questionName": "tushiggg",
-//            "questionDescription": "helloo",
-//            "poll": {
-//        "pollId": 2
-//    },
-//        "questionType": {
-//        "questionTypeId": 1
-//    }
-//    }
-//    ]
     @RequestMapping(value = "", method = RequestMethod.POST)
     public List addQuestions(@RequestBody List<Question> newQuestions) {
         ArrayList<Integer> a = new ArrayList<>();
