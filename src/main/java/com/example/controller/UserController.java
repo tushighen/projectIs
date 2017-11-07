@@ -1,16 +1,13 @@
 package com.example.controller;
 
-        import com.example.model.User;
-        import com.example.model.UserRole;
-        import com.example.service.UserRoleService;
-        import com.example.service.UserService;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.ui.Model;
-        import org.springframework.web.bind.annotation.*;
+import com.example.model.User;
+import com.example.service.UserRoleService;
+import com.example.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-        import javax.validation.Valid;
-        import java.util.HashMap;
-        import java.util.List;
+import java.util.HashMap;
+import java.util.List;
 
 
 @RestController
@@ -26,12 +23,6 @@ public class UserController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List getAllUser() {
         return userService.getAllUser();
-    }
-
-    @RequestMapping(value = "users", method = RequestMethod.GET)
-    public List getAllUsers() {
-        return userService.getAllUsers();
-
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -51,17 +42,27 @@ public class UserController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
-    public void editUser(@RequestBody User user) {
-        userService.editUser(user);
+    public User editUser(@RequestBody User user) {
+        return userService.editUser(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void removeUser(@PathVariable("id") int id) {
-        userService.removeStudent(id);
+        userService.removeUser(id);
     }
 
     @RequestMapping(value = "/email/{email}", method = RequestMethod.GET)
     public User findByEmail(@PathVariable("email") String email) {
         return userService.findByEmail(email);
+    }
+
+    @RequestMapping(value = "/request", method = RequestMethod.PUT)
+    public User requestDeveloper(@RequestBody User user) {
+        return userService.requestDeveloper(user);
+    }
+
+    @RequestMapping(value = "/developer", method = RequestMethod.PUT)
+    public User addDeveloper(@RequestBody User user) {
+        return userService.addDeveloper(user);
     }
 }

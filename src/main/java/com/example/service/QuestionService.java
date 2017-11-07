@@ -18,15 +18,26 @@ public class QuestionService {
         return questionRepository.findAll();
     }
 
-    public Question addQuestions(Question questions) {
-        return questionRepository.save(questions);
-    }
+//    public Question addQuestions(Question questions) {
+//        return questionRepository.save(questions);
+//    }
 
     public List findByPoll(Poll poll) {
         return questionRepository.findByPoll(poll);
     }
 
-    public void addQuestionss(List<Question> questions, int pollId) {
+    public void addQuestions(List<Question> questions, int pollId) {
+        Question question = new Question();
+        Poll poll = new Poll();
+        poll.setPollId(pollId);
+        for (int i = 0; i < questions.size(); i++) {
+            question = questions.get(i);
+            question.setPoll(poll);
+            questionRepository.save(question);
+        }
+    }
+
+    public void editQuestions(List<Question> questions, int pollId) {
         Question question = new Question();
         Poll poll = new Poll();
         poll.setPollId(pollId);

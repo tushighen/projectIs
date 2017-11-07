@@ -32,7 +32,8 @@ public class User {
     @Column
     private Boolean isRequested;
 
-    @Column Boolean isDeveloper;
+    @Column
+    private Boolean isDeveloper;
 
     @ManyToOne
     @JoinColumn(name = "userRoleId")
