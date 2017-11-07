@@ -1,16 +1,16 @@
 package com.example.controller;
 
-import com.example.model.User;
-import com.example.model.UserRole;
-import com.example.service.UserRoleService;
-import com.example.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+        import com.example.model.User;
+        import com.example.model.UserRole;
+        import com.example.service.UserRoleService;
+        import com.example.service.UserService;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
+        import javax.validation.Valid;
+        import java.util.HashMap;
+        import java.util.List;
 
 
 @RestController

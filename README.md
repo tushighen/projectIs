@@ -11,16 +11,29 @@
 
     {  
        "email":"example@example.com",
-       "code":"B0000000",
-       "firstName":"firstname",
-       "lastName":"lastName",
-       "dateOfBirth":1900-03-03,
-       "sex":"sex",
+       "userName":"username",
        "password":"password",
        "userRole":{  
           "userRoleId":1 
        }
     }
+    
+## _edit User Request Example - localhost:8080/api/users (method = PUT)_
+
+    {  
+       "userId": 1,
+       "email":"example@example.com",
+       "userName":"username",
+       "password":"password",
+       "userRole":{  
+          "userRoleId":1 
+       }
+    }
+    
+## _remove User Request Example - localhost:8080/api/users{id} (method = DELETE)_
+    
+    localhost:8080/api/users/1
+
 
 ## _add new Poll Request Example - localhost:8080/api/polls (method = POST)_
 

@@ -22,9 +22,9 @@ public class UserRole {
     @JsonManagedReference(value = "userRole")
     private Set<User> users;
 
-    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "pollRole")
-    private Set<PollRole> pollRoles;
+//    @OneToMany(mappedBy = "userRole", cascade = CascadeType.ALL)
+//    @JsonManagedReference(value = "pollRole")
+//    private Set<PollRole> pollRoles;
 
     public int getUserRoleId() {
         return userRoleId;
@@ -50,11 +50,11 @@ public class UserRole {
         this.users = users;
     }
 
-    public Set<PollRole> getPollRoles() {
-        return pollRoles;
-    }
-
-    public void setPollRoles(Set<PollRole> pollRoles) {
-        this.pollRoles = pollRoles;
-    }
+//    public Set<PollRole> getPollRoles() {
+//        return pollRoles;
+//    }
+//
+//    public void setPollRoles(Set<PollRole> pollRoles) {
+//        this.pollRoles = pollRoles;
+//    }
 }

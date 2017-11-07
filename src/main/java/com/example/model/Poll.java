@@ -43,11 +43,6 @@ public class Poll {
     @NotNull
     private User user;
 
-    @OneToOne(mappedBy = "poll", cascade = CascadeType.ALL)
-    @JsonBackReference(value = "poll")
-    @Null
-    private PollRole pollRole;
-
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "pollQuestion")
     @Transient
@@ -103,14 +98,6 @@ public class Poll {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public PollRole getPollRole() {
-        return pollRole;
-    }
-
-    public void setPollRole(PollRole pollRole) {
-        this.pollRole = pollRole;
     }
 
     public List<Question> getQuestions() {

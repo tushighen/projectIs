@@ -26,11 +26,6 @@ public class UserService {
             Map<String, Object> model = new HashMap<>();
             model.put("id", user.getUserId());
             model.put("email", user.getEmail());
-            model.put("code", user.getCode());
-            model.put("firstName", user.getFirstName());
-            model.put("lastName", user.getLastName());
-            model.put("dateOfBirth", user.getDateOfBirth());
-            model.put("sex", user.getSex());
             model.put("password", user.getPassword());
             role = user.getUserRole().getRoleName();
             model.put("role", role);

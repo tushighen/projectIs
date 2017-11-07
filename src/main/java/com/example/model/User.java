@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.Set;
 
 @Entity
-//@JsonIgnoreProperties(value = {"polls", "answers"})
+@JsonIgnoreProperties(value = {"polls", "answers"})
 public class User {
 
     @Id
@@ -21,27 +21,18 @@ public class User {
     @Column(nullable = false)
     private String email;
 
-    @Column
-    private String code;
     @NotNull
     @Column(nullable = false)
-    private String firstName;
-
-    @NotNull
-    @Column(nullable = false)
-    private String lastName;
-
-    @NotNull
-    @Column(nullable = false)
-    private Date dateOfBirth;
-
-    @NotNull
-    @Column(nullable = false)
-    private String sex;
+    private String userName;
 
     @NotNull
     @Column(nullable = false)
     private String password;
+
+    @Column
+    private Boolean isRequested;
+
+    @Column Boolean isDeveloper;
 
     @ManyToOne
     @JoinColumn(name = "userRoleId")
@@ -60,6 +51,7 @@ public class User {
     //    @Transient
 //    private int userRoleId;
 
+
     public int getUserId() {
         return userId;
     }
@@ -76,44 +68,12 @@ public class User {
         this.email = email;
     }
 
-    public String getCode() {
-        return code;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -122,6 +82,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getRequested() {
+        return isRequested;
+    }
+
+    public void setRequested(Boolean requested) {
+        isRequested = requested;
+    }
+
+    public Boolean getDeveloper() {
+        return isDeveloper;
+    }
+
+    public void setDeveloper(Boolean developer) {
+        isDeveloper = developer;
     }
 
     public UserRole getUserRole() {
