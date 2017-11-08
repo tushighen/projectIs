@@ -18,8 +18,6 @@ public class PollService {
     @Autowired
     PollRepository pollRepository;
     @Autowired
-    QuestionRepository questionRepository;
-    @Autowired
     QuestionService questionService;
 
     //    Санал асуулга нэмэх

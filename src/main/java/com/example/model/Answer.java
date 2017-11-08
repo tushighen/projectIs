@@ -22,7 +22,6 @@ public class Answer {
     @ManyToOne
     @JoinColumn(name = "userId")
     @JsonBackReference(value = "userAnswer")
-    @NotNull
     private User user;
 
     @OneToOne
