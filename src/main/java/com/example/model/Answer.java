@@ -27,7 +27,7 @@ public class Answer {
     @OneToOne
     @JoinColumn(name = "optionChoiceId")
     @JsonBackReference(value = "optionChoice")
-    @NotNull
+    @Null
     private OptionChoice optionChoice;
 
     public int getAnswerId() {
