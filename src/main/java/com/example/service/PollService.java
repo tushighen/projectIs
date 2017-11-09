@@ -30,11 +30,19 @@ public class PollService {
     }
 
     public List getAllPoll() {
-        String type;
         List<Poll> polls = pollRepository.findAll();
         for (int i = 0; i < polls.size(); i++) {
             for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
                 polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
+            }
+        }
+
+        for (int i = 0; i < polls.size(); i++) {
+            for (int j = 0; j < polls.get(i).getQuestions().size(); j++) {
+                for (int l = 0; l < polls.get(i).getQuestions().get(j).getOptionChoices().size(); l++) {
+                    if (polls.get(i).getQuestions().get(j).getOptionChoices().get(l).getCustom() != null)
+                        polls.get(i).getQuestions().get(j).getOptionChoices().remove(l);
+                }
             }
         }
         return polls;

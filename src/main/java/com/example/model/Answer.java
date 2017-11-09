@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import java.util.List;
 
 @Entity
 public class Answer {
@@ -15,20 +16,20 @@ public class Answer {
     @Column(nullable = false)
     private int answerId;
 
-    @Null
-    @Column
-    private String answerText;
-
     @ManyToOne
     @JoinColumn(name = "userId")
     @JsonBackReference(value = "userAnswer")
     private User user;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "optionChoiceId")
     @JsonBackReference(value = "optionChoice")
-    @Null
+    @NotNull
     private OptionChoice optionChoice;
+
+    @Transient
+    @Null
+    private OptionChoice choice;
 
     public int getAnswerId() {
         return answerId;
@@ -36,14 +37,6 @@ public class Answer {
 
     public void setAnswerId(int answerId) {
         this.answerId = answerId;
-    }
-
-    public String getAnswerText() {
-        return answerText;
-    }
-
-    public void setAnswerText(String answerText) {
-        this.answerText = answerText;
     }
 
     public User getUser() {
@@ -60,5 +53,13 @@ public class Answer {
 
     public void setOptionChoice(OptionChoice optionChoice) {
         this.optionChoice = optionChoice;
+    }
+
+    public OptionChoice getChoice() {
+        return choice;
+    }
+
+    public void setChoice(OptionChoice choice) {
+        this.choice = choice;
     }
 }

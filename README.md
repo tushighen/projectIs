@@ -172,4 +172,31 @@
 ## _remove Poll Request Example - localhost:8080/api/polls (method = DELETE)_
 
     localhost:8080/api/polls/1
+    
+## _add Answer Example - localhost:8080/api/polls (method = DELETE)_
 
+    [
+       {
+          "optionChoice":{
+             "optionChoiceId":1,
+             "choiceName":"option 1"
+          }
+       },
+       {
+          "optionChoice":{
+             "optionChoiceId":4,
+             "choiceName":"option 1"
+          },
+          "user":{
+             "userId":1
+          }
+       }
+    ]
+    
+## _view PollStatistics - localhost:8080/api/polls (method = DELETE)_
+    
+    SELECT p.poll_id, p.poll_name, q.question_id, q.question_name, a.option_choice_id, o.choice_name, a.answer_text
+      FROM answer as a
+      JOIN option_choice as o ON a.option_choice_id = o.option_choice_id
+      JOIN question as q ON q.question_id = o.question_id
+      JOIN poll as p ON p.poll_id = q.poll_id;

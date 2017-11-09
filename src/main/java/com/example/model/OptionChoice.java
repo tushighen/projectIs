@@ -2,9 +2,11 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 public class OptionChoice {
@@ -18,15 +20,18 @@ public class OptionChoice {
     @Column(nullable = false)
     private String choiceName;
 
+    @Column
+    private Boolean isCustom;
+
     @ManyToOne
     @JoinColumn(name = "questionId")
     @JsonBackReference(value = "questionOptionChoice")
     @NotNull
     private Question question;
 
-    @OneToOne(mappedBy = "optionChoice", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "optionChoice", cascade = CascadeType.ALL)
     @JsonBackReference(value = "optionChoice")
-    private Answer answer;
+    private List<Answer> answers;
 
     public int getOptionChoiceId() {
         return optionChoiceId;
@@ -52,11 +57,19 @@ public class OptionChoice {
         this.question = question;
     }
 
-    public Answer getAnswer() {
-        return answer;
+    public List<Answer> getAnswers() {
+        return answers;
     }
 
-    public void setAnswer(Answer answer) {
-        this.answer = answer;
+    public void setAnswers(List<Answer> answers) {
+        this.answers = answers;
+    }
+
+    public Boolean getCustom() {
+        return isCustom;
+    }
+
+    public void setCustom(Boolean custom) {
+        isCustom = custom;
     }
 }

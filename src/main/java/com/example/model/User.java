@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -35,13 +36,13 @@ public class User {
     @NotNull
     private UserRole userRole;
 
-    @ManyToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "userPoll")
-    private Set<Poll> polls;
+    private List<Poll> polls;
 
-    @ManyToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "userAnswer")
-    private Set<Answer> answers;
+    private List<Answer> answers;
 
     public int getUserId() {
         return userId;
@@ -83,19 +84,19 @@ public class User {
         this.userRole = userRole;
     }
 
-    public Set<Poll> getPolls() {
+    public List<Poll> getPolls() {
         return polls;
     }
 
-    public void setPolls(Set<Poll> polls) {
+    public void setPolls(List<Poll> polls) {
         this.polls = polls;
     }
 
-    public Set<Answer> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(Set<Answer> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 }
