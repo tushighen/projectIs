@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,7 +21,7 @@ public class QuestionType {
 
     @OneToMany(mappedBy = "questionType", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "questionType")
-    private Set<Question> questions;
+    private List<Question> questions;
 
     public int getQuestionTypeId() {
         return questionTypeId;
@@ -38,11 +39,11 @@ public class QuestionType {
         this.typeName = typeName;
     }
 
-    public Set<Question> getQuestions() {
+    public List<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Set<Question> questions) {
+    public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
 }

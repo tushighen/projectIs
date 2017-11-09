@@ -4,6 +4,7 @@ package com.example.controller;
         import com.example.service.PollService;
         import com.example.service.QuestionService;
         import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.http.MediaType;
         import org.springframework.web.bind.annotation.*;
 
         import java.util.ArrayList;
@@ -19,7 +20,8 @@ public class PollController {
     @Autowired
     QuestionService questionService;
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
     public Poll addPoll(@RequestBody Poll newPoll) {
         pollService.addPoll(newPoll);
         return newPoll;

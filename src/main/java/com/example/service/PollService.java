@@ -30,7 +30,14 @@ public class PollService {
     }
 
     public List getAllPoll() {
-        return pollRepository.findAll();
+        String type;
+        List<Poll> polls = pollRepository.findAll();
+        for (int i = 0; i < polls.size(); i++) {
+            for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
+                polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
+            }
+        }
+        return polls;
     }
 
     public Poll getPoll(int id) {

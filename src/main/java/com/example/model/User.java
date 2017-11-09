@@ -29,12 +29,6 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private Boolean isRequested;
-
-    @Column
-    private Boolean isDeveloper;
-
     @ManyToOne
     @JoinColumn(name = "userRoleId")
     @JsonBackReference(value = "userRole")
@@ -48,10 +42,6 @@ public class User {
     @ManyToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "userAnswer")
     private Set<Answer> answers;
-
-    //    @Transient
-//    private int userRoleId;
-
 
     public int getUserId() {
         return userId;
@@ -83,22 +73,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public Boolean getRequested() {
-        return isRequested;
-    }
-
-    public void setRequested(Boolean requested) {
-        isRequested = requested;
-    }
-
-    public Boolean getDeveloper() {
-        return isDeveloper;
-    }
-
-    public void setDeveloper(Boolean developer) {
-        isDeveloper = developer;
     }
 
     public UserRole getUserRole() {

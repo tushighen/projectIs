@@ -2,6 +2,7 @@ package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,14 +23,20 @@ public class Poll {
     private String pollName;
 
     @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     private Date createdDate;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     private Date modifiedDate;
 
-    @NotNull
     @Column(nullable = false)
-    private Boolean isActive;
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    private Date startDate;
+
+    @Column(nullable = false)
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    private Date endDate;
 
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -74,12 +81,20 @@ public class Poll {
         this.modifiedDate = modifiedDate;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public User getUser() {

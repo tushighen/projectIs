@@ -31,8 +31,6 @@ public class UserService {
     }
 
     public void addUser(User user) {
-        user.setRequested(false);
-        user.setDeveloper(false);
         userRepository.save(user);
     }
 
