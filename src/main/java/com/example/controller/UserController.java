@@ -32,13 +32,12 @@ public class UserController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public HashMap userLogin(@RequestBody HashMap model) {
-        return userService.findByFirstName(model);
+        return userService.userLogin(model);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
-    public User addUser(@RequestBody User user) {
-        userService.addUser(user);
-        return user;
+    public HashMap addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT)

@@ -30,8 +30,21 @@ public class UserService {
         return user;
     }
 
-    public void addUser(User user) {
-        userRepository.save(user);
+    public HashMap addUser(User user) {
+        HashMap model = new HashMap();
+        if (user != null) {
+            if (userRepository.findByEmail(user.getEmail()) == null) {
+                userRepository.save(user);
+                model.put("msg", "Success");
+                return model;
+            } else {
+                model.put("msg", "User exist");
+                return model;
+            }
+        } else {
+            model.put("msg", "error");
+            return model;
+        }
     }
 
     public User editUser(User user) {
@@ -46,7 +59,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public HashMap findByFirstName(HashMap loginModel) {
+    public HashMap userLogin(HashMap loginModel) {
         HashMap model = new HashMap();
         User user = userRepository.findByEmail(loginModel.get("email").toString());
         if (user != null) {
