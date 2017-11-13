@@ -65,6 +65,8 @@ public class UserService {
         if (user != null) {
             if (loginModel.get("password").toString().equals(user.getPassword())) {
                 model.put("msg", "Success");
+                model.put("userName", user.getUserName());
+                model.put("userId", user.getUserId());
             } else {
                 model.put("msg", "Wrong password");
             }
