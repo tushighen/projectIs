@@ -47,8 +47,35 @@ public class UserService {
         }
     }
 
-    public User editUser(User user) {
-        return userRepository.save(user);
+    public HashMap editUser(HashMap editModel) {
+        HashMap model = new HashMap();
+        User editUser = new User();
+
+        editUser.setUserId((Integer) editModel.get("id"));
+        editUser.setEmail(editModel.get("email").toString());
+        editUser.setUserName(editModel.get("userName").toString());
+        editUser.setPassword(editModel.get("password").toString());
+
+        User user = userRepository.findByEmail(editUser.getEmail());
+
+        if (editModel.get("currentPassword").toString().equals(user.getPassword())) {
+            if (editUser.getPassword().length() == 0) {
+                user.setUserName(editUser.getUserName());
+                userRepository.save(user);
+                model.put("msg", "Username changed");
+            } else {
+                user.setUserName(editUser.getUserName());
+                user.setPassword(editUser.getPassword());
+                userRepository.save(user);
+                model.put("msg", "User password changed");
+            }
+            model.put("userName", user.getUserName());
+            model.put("userId", user.getUserId());
+            return model;
+        } else {
+            model.put("msg", "Wrong password");
+            return model;
+        }
     }
 
     public void removeUser(int id) {

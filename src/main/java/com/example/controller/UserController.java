@@ -41,8 +41,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.PUT)
-    public User editUser(@RequestBody User user) {
-        return userService.editUser(user);
+    public HashMap editUser(@RequestBody HashMap model) {
+        return userService.editUser(model);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

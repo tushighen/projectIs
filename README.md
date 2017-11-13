@@ -18,16 +18,24 @@
        }
     }
     
-## _edit User Request Example - localhost:8080/api/users (method = PUT)_
+## _edit User(Only user name) Example - localhost:8080/api/users (method = PUT)_
 
     {  
-       "userId": 1,
+       "id":1,
        "email":"example@example.com",
-       "userName":"username",
-       "password":"password",
-       "userRole":{  
-          "userRoleId":1 
-       }
+       "userName":"example",
+       "password": "",
+       "currentPassword": "example"
+    }
+    
+## _edit User(Password) Example - localhost:8080/api/users (method = PUT)_
+
+    {  
+       "id":1,
+       "email":"example@example.com",
+       "userName":"example",
+       "password": "new password",
+       "currentPassword": "example"
     }
     
 ## _remove User Example - localhost:8080/api/users{id} (method = DELETE)_
