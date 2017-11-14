@@ -42,6 +42,11 @@ public class PollController {
         return pollService.getPoll(id);
     }
 
+    @RequestMapping(value = "user/{id}", method = RequestMethod.GET)
+    public List<Poll> getPollsByUserId(@PathVariable("id") int id) {
+        return pollService.getPollsByUserId(id);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Poll removePoll(@PathVariable("id") int id) {
         return pollService.removePoll(id);
