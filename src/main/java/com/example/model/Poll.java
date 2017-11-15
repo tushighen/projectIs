@@ -24,7 +24,7 @@ public class Poll {
     private String pollName;
 
     @Column
-    private String pollDescriptionn;
+    private String pollDescription;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy.MM.dd")
