@@ -1,9 +1,6 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
