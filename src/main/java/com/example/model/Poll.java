@@ -23,6 +23,9 @@ public class Poll {
     @Column(nullable = false)
     private String pollName;
 
+    @Column
+    private String pollDescription;
+
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy.MM.dd")
     private Date createdDate;
@@ -64,6 +67,14 @@ public class Poll {
 
     public void setPollName(String pollName) {
         this.pollName = pollName;
+    }
+
+    public String getPollDescription() {
+        return pollDescription;
+    }
+
+    public void setPollDescription(String pollDescription) {
+        this.pollDescription = pollDescription;
     }
 
     public Date getCreatedDate() {
