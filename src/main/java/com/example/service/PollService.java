@@ -34,34 +34,13 @@ public class PollService {
 
     public List getAllPoll() {
         List<Poll> polls = pollRepository.findAll();
-        for (int i = 0; i < polls.size(); i++) {
-            for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
-                polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
-                Date todayDate = new Date();
-                if (polls.get(i).getStartDate().before(todayDate)) {
-                    polls.get(i).setStarted(true);
-                    if (polls.get(i).getEndDate().before(todayDate))
-                        polls.get(i).setExpired(true);
-                    else polls.get(i).setExpired(false);
-
-                } else {
-                    polls.get(i).setStarted(false);
-                    if (polls.get(i).getEndDate().before(todayDate))
-                        polls.get(i).setExpired(true);
-                    else polls.get(i).setExpired(false);
-                }
-            }
-        }
+        setStatus(polls);
         return removeCustom(polls);
     }
 
     public List getPollsByUserId(int id) {
         List<Poll> polls = pollRepository.findByUser(userService.getUser(id));
-        for (int i = 0; i < polls.size(); i++) {
-            for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
-                polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
-            }
-        }
+        setStatus(polls);
         return removeCustom(polls);
     }
 
@@ -95,5 +74,26 @@ public class PollService {
             }
         }
         return polls;
+    }
+
+    private void setStatus(List<Poll> polls) {
+        for (int i = 0; i < polls.size(); i++) {
+            for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
+                polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
+                Date todayDate = new Date();
+                if (polls.get(i).getStartDate().before(todayDate)) {
+                    polls.get(i).setStarted(true);
+                    if (polls.get(i).getEndDate().before(todayDate))
+                        polls.get(i).setExpired(true);
+                    else polls.get(i).setExpired(false);
+
+                } else {
+                    polls.get(i).setStarted(false);
+                    if (polls.get(i).getEndDate().before(todayDate))
+                        polls.get(i).setExpired(true);
+                    else polls.get(i).setExpired(false);
+                }
+            }
+        }
     }
 }
