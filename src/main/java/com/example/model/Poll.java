@@ -53,6 +53,14 @@ public class Poll {
 //    @Transient
     private List<Question> questions;
 
+    @Transient
+    @Null
+    private Boolean isStarted;
+
+    @Transient
+    @Null
+    private Boolean isExpired;
+
     public int getPollId() {
         return pollId;
     }
@@ -123,5 +131,21 @@ public class Poll {
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+
+    public Boolean getStarted() {
+        return isStarted;
+    }
+
+    public void setStarted(Boolean started) {
+        isStarted = started;
+    }
+
+    public Boolean getExpired() {
+        return isExpired;
+    }
+
+    public void setExpired(Boolean expired) {
+        isExpired = expired;
     }
 }

@@ -37,18 +37,22 @@ public class PollService {
         for (int i = 0; i < polls.size(); i++) {
             for (int l = 0; l < polls.get(i).getQuestions().size(); l++) {
                 polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
-            }
-        }
+                Date todayDate = new Date();
+                if (polls.get(i).getStartDate().before(todayDate)) {
+                    polls.get(i).setStarted(true);
+                    if (polls.get(i).getEndDate().before(todayDate))
+                        polls.get(i).setExpired(true);
+                    else polls.get(i).setExpired(false);
 
-        for (int i = 0; i < polls.size(); i++) {
-            for (int j = 0; j < polls.get(i).getQuestions().size(); j++) {
-                for (int l = 0; l < polls.get(i).getQuestions().get(j).getOptionChoices().size(); l++) {
-                    if (polls.get(i).getQuestions().get(j).getOptionChoices().get(l).getCustom() != null)
-                        polls.get(i).getQuestions().get(j).getOptionChoices().remove(l);
+                } else {
+                    polls.get(i).setStarted(false);
+                    if (polls.get(i).getEndDate().before(todayDate))
+                        polls.get(i).setExpired(true);
+                    else polls.get(i).setExpired(false);
                 }
             }
         }
-        return polls;
+        return removeCustom(polls);
     }
 
     public List getPollsByUserId(int id) {
@@ -58,16 +62,7 @@ public class PollService {
                 polls.get(i).getQuestions().get(l).setType(polls.get(i).getQuestions().get(l).getQuestionType().getTypeName());
             }
         }
-
-        for (int i = 0; i < polls.size(); i++) {
-            for (int j = 0; j < polls.get(i).getQuestions().size(); j++) {
-                for (int l = 0; l < polls.get(i).getQuestions().get(j).getOptionChoices().size(); l++) {
-                    if (polls.get(i).getQuestions().get(j).getOptionChoices().get(l).getCustom() != null)
-                        polls.get(i).getQuestions().get(j).getOptionChoices().remove(l);
-                }
-            }
-        }
-        return polls;
+        return removeCustom(polls);
     }
 
     public Poll getPoll(int id) {
@@ -88,5 +83,17 @@ public class PollService {
         pollRepository.save(editPoll);
         questionService.editQuestions(editPoll.getQuestions(), editPoll.getPollId());
         return editPoll;
+    }
+
+    private List removeCustom(List<Poll> polls) {
+        for (int i = 0; i < polls.size(); i++) {
+            for (int j = 0; j < polls.get(i).getQuestions().size(); j++) {
+                for (int l = 0; l < polls.get(i).getQuestions().get(j).getOptionChoices().size(); l++) {
+                    if (polls.get(i).getQuestions().get(j).getOptionChoices().get(l).getCustom() != null)
+                        polls.get(i).getQuestions().get(j).getOptionChoices().remove(l);
+                }
+            }
+        }
+        return polls;
     }
 }
