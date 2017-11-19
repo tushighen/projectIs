@@ -45,7 +45,27 @@ public class PollService {
     }
 
     public Poll getPoll(int id) {
-        return pollRepository.findOne(id);
+        Poll poll = new Poll();
+        poll = pollRepository.findOne(id);
+        Date todayDate = new Date();
+        if (poll.getStartDate().before(todayDate)) {
+            poll.setStarted(true);
+            if (poll.getEndDate().before(todayDate))
+                poll.setExpired(true);
+            else poll.setExpired(false);
+        } else {
+            poll.setStarted(false);
+            if (poll.getEndDate().before(todayDate))
+                poll.setExpired(true);
+            else poll.setExpired(false);
+        }
+        for (int i = 0; i < poll.getQuestions().size(); i++) {
+            for (int j = 0; j < poll.getQuestions().get(i).getOptionChoices().size(); j++) {
+                if (poll.getQuestions().get(i).getOptionChoices().get(j).getCustom() != null)
+                    poll.getQuestions().get(i).getOptionChoices().remove(j);
+            }
+        }
+        return poll;
     }
 
     public Poll removePoll(int id) {
