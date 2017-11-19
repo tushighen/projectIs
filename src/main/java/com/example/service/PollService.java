@@ -59,12 +59,18 @@ public class PollService {
                 poll.setExpired(true);
             else poll.setExpired(false);
         }
+
         for (int i = 0; i < poll.getQuestions().size(); i++) {
             for (int j = 0; j < poll.getQuestions().get(i).getOptionChoices().size(); j++) {
                 if (poll.getQuestions().get(i).getOptionChoices().get(j).getCustom() != null)
                     poll.getQuestions().get(i).getOptionChoices().remove(j);
             }
         }
+
+        for (int i = 0; i < poll.getQuestions().size(); i++) {
+            poll.getQuestions().get(i).setType(poll.getQuestions().get(i).getQuestionType().getTypeName());
+        }
+
         return poll;
     }
 
