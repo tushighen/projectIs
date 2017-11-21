@@ -1,7 +1,7 @@
 package com.example.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionId")
 public class Question {
 
     @Id
@@ -30,8 +31,9 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "questionTypeId")
-    @JsonBackReference(value = "questionType")
+//    @JsonBackReference(value = "questionType")
     @NotNull
+    @JsonSerialize
     private QuestionType questionType;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
