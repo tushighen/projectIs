@@ -24,6 +24,5 @@ public class AnswerController {
     @ResponseBody
     public List<Answer> addAnswers(@RequestBody List<Answer> answers) {
         return answerService.addAnswers(answers);
-//        return answers;
     }
 }
