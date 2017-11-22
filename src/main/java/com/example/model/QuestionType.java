@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionTypeId")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionTypeId")
 public class QuestionType {
 
     @Id
@@ -23,7 +23,7 @@ public class QuestionType {
     private String typeName;
 
     @OneToMany(mappedBy = "questionType", cascade = CascadeType.ALL)
-//    @JsonManagedReference(value = "questionType")
+    @JsonManagedReference(value = "questionType")
     private List<Question> questions;
 
     public int getQuestionTypeId() {

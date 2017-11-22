@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "questionId")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "questionTypeId", scope = QuestionType.class)
 public class Question {
 
     @Id
@@ -31,9 +31,9 @@ public class Question {
 
     @ManyToOne
     @JoinColumn(name = "questionTypeId")
-//    @JsonBackReference(value = "questionType")
+    @JsonBackReference(value = "questionType")
     @NotNull
-    @JsonSerialize
+//    @JsonSerialize
     private QuestionType questionType;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL)
