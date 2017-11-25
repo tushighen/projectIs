@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.Null;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -17,18 +18,23 @@ public class PollAnswer {
 
     @ManyToOne
     @JoinColumn(name = "pollId")
-    @JsonBackReference(value = "pollAnswerPoll")
+    @JsonBackReference(value = "pollPollAnswer")
     private Poll poll;
 
     @OneToMany(mappedBy = "pollAnswer", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "pollAnswer")
     @Column(nullable = false)
+//    @Null
     private List<Answer> answers;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     @JsonBackReference(value = "userPollAnswer")
     private User user;
+
+    @Transient
+    @Null
+    private String userEmail;
 
     public int getPollAnswerId() {
         return pollAnswerId;
@@ -60,5 +66,13 @@ public class PollAnswer {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

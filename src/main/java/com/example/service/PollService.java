@@ -22,6 +22,8 @@ public class PollService {
     QuestionService questionService;
     @Autowired
     UserService userService;
+    @Autowired
+    PollAnswerService pollAnswerService;
 
     //    Санал асуулга нэмэх
     public Poll addPoll(Poll poll) {
@@ -35,6 +37,7 @@ public class PollService {
     public List getAllPoll() {
         List<Poll> polls = pollRepository.findAll();
         setStatus(polls);
+        setUser(polls);
         return removeCustom(polls);
     }
 
@@ -122,6 +125,20 @@ public class PollService {
                     if (polls.get(i).getEndDate().before(todayDate))
                         polls.get(i).setExpired(true);
                     else polls.get(i).setExpired(false);
+                }
+            }
+        }
+    }
+
+    private void setUser(List<Poll> polls) {
+        for (int i = 0; i < polls.size(); i++) {
+            int guest = 1;
+            for (int j = 0; j < polls.get(i).getPollAnswers().size(); j++) {
+                if (polls.get(i).getPollAnswers().get(j).getUser() != null)
+                    polls.get(i).getPollAnswers().get(j).setUserEmail(polls.get(i).getPollAnswers().get(j).getUser().getEmail());
+                else {
+                    polls.get(i).getPollAnswers().get(j).setUserEmail("guest" + guest);
+                    guest++;
                 }
             }
         }

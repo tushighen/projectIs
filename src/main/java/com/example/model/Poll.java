@@ -55,9 +55,8 @@ public class Poll {
     private List<Question> questions;
 
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "pollAnswerPoll")
+    @JsonManagedReference(value = "pollPollAnswer")
     @Null
-//    @JsonIgnore
     private List<PollAnswer> pollAnswers;
 
     @Transient
@@ -67,10 +66,6 @@ public class Poll {
     @Transient
     @Null
     private Boolean isExpired;
-
-    @Transient
-    @Null
-    private String userEmail;
 
     public int getPollId() {
         return pollId;
@@ -166,13 +161,5 @@ public class Poll {
 
     public void setExpired(Boolean expired) {
         isExpired = expired;
-    }
-
-    public String getUserEmail() {
-        return userEmail;
-    }
-
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
     }
 }

@@ -49,4 +49,12 @@ public class QuestionType {
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
     }
+
+    public QuestionType(String typeName) {
+        this.typeName = typeName;
+    }
+
+    public QuestionType() {
+
+    }
 }

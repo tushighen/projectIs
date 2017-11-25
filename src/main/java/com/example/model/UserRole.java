@@ -57,4 +57,13 @@ public class UserRole {
 //    public void setPollRoles(Set<PollRole> pollRoles) {
 //        this.pollRoles = pollRoles;
 //    }
+
+
+    public UserRole(String roleName) {
+        this.roleName = roleName;
+    }
+
+    public UserRole() {
+
+    }
 }
