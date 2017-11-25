@@ -1,6 +1,7 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -53,6 +54,12 @@ public class Poll {
 //    @Transient
     private List<Question> questions;
 
+    @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "pollAnswerPoll")
+    @Null
+//    @JsonIgnore
+    private List<PollAnswer> pollAnswers;
+
     @Transient
     @Null
     private Boolean isStarted;
@@ -60,6 +67,10 @@ public class Poll {
     @Transient
     @Null
     private Boolean isExpired;
+
+    @Transient
+    @Null
+    private String userEmail;
 
     public int getPollId() {
         return pollId;
@@ -133,6 +144,14 @@ public class Poll {
         this.questions = questions;
     }
 
+    public List<PollAnswer> getPollAnswers() {
+        return pollAnswers;
+    }
+
+    public void setPollAnswers(List<PollAnswer> pollAnswers) {
+        this.pollAnswers = pollAnswers;
+    }
+
     public Boolean getStarted() {
         return isStarted;
     }
@@ -147,5 +166,13 @@ public class Poll {
 
     public void setExpired(Boolean expired) {
         isExpired = expired;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

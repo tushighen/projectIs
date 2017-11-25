@@ -27,6 +27,11 @@ public class Answer {
     @NotNull
     private OptionChoice optionChoice;
 
+    @ManyToOne
+    @JoinColumn(name = "pollAnswerId")
+    @JsonBackReference(value = "pollAnswer")
+    private PollAnswer pollAnswer;
+
     @Transient
     @Null
     private OptionChoice choice;
@@ -53,6 +58,14 @@ public class Answer {
 
     public void setOptionChoice(OptionChoice optionChoice) {
         this.optionChoice = optionChoice;
+    }
+
+    public PollAnswer getPollAnswer() {
+        return pollAnswer;
+    }
+
+    public void setPollAnswer(PollAnswer pollAnswer) {
+        this.pollAnswer = pollAnswer;
     }
 
     public OptionChoice getChoice() {
