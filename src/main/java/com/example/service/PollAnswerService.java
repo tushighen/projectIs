@@ -25,10 +25,4 @@ public class PollAnswerService {
         pollAnswerRepository.save(pollAnswer);
         return pollAnswer;
     }
-
-//    public List addUser(Poll poll) {
-//        List<PollAnswer> pollAnswers = new ArrayList<>();
-//        pollAnswers = poll.getPollAnswers();
-//        return pollAnswers;
-//    }
 }

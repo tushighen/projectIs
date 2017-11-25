@@ -183,23 +183,31 @@
     
 ## _add Answer Example - localhost:8080/api/polls (method = DELETE)_
 
-    [
-       {
-          "optionChoice":{
-             "optionChoiceId":1,
-             "choiceName":"option 1"
-          }
+    {  
+       "poll":{  
+          "pollId":1
        },
-       {
-          "optionChoice":{
-             "optionChoiceId":4,
-             "choiceName":"option 1"
+       "user":{  
+          "userId":1
+       },
+       "answers":[  
+          {  
+             "optionChoice":{  
+                "optionChoiceId":1
+             }
           },
-          "user":{
-             "userId":1
+          {
+          	"optionChoice": {
+             	"optionChoiceId": 2
+             }
+          },
+          {
+          	"optionChoice": {
+             	"optionChoiceId": 0
+             }
           }
-       }
-    ]
+       ]
+    }
     
 ## _view PollStatistics - localhost:8080/api/polls (method = DELETE)_
     

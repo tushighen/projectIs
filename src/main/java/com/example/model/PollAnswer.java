@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +25,7 @@ public class PollAnswer {
     @OneToMany(mappedBy = "pollAnswer", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "pollAnswer")
     @Column(nullable = false)
-//    @Null
+    @NotNull
     private List<Answer> answers;
 
     @ManyToOne

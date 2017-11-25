@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.model.*;
+import com.example.service.PollAnswerService;
 import com.example.service.PollService;
 import com.example.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class PollController {
     PollService pollService;
     @Autowired
     QuestionService questionService;
+    @Autowired
+    PollAnswerService pollAnswerService;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -50,5 +53,11 @@ public class PollController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public Poll removePoll(@PathVariable("id") int id) {
         return pollService.removePoll(id);
+    }
+
+    @RequestMapping(value = "/fill", method = RequestMethod.POST)
+    @ResponseBody
+    public PollAnswer addPollAnswer(@RequestBody PollAnswer addPollAnswer) {
+        return pollAnswerService.addPollAnswer(addPollAnswer);
     }
 }
