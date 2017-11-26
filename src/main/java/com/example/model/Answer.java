@@ -17,11 +17,6 @@ public class Answer {
     private int answerId;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
-    @JsonBackReference(value = "userAnswer")
-    private User user;
-
-    @ManyToOne
     @JoinColumn(name = "optionChoiceId")
     @JsonBackReference(value = "optionChoice")
 //    @NotNull
@@ -45,14 +40,6 @@ public class Answer {
 
     public void setAnswerId(int answerId) {
         this.answerId = answerId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public OptionChoice getOptionChoice() {

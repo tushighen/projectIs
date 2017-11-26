@@ -41,10 +41,6 @@ public class User {
     private List<Poll> polls;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @JsonManagedReference(value = "userAnswer")
-    private List<Answer> answers;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "userPollAnswer")
     private List<PollAnswer> pollAnswers;
 
@@ -94,14 +90,6 @@ public class User {
 
     public void setPolls(List<Poll> polls) {
         this.polls = polls;
-    }
-
-    public List<Answer> getAnswers() {
-        return answers;
-    }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
     }
 
     public List<PollAnswer> getPollAnswers() {

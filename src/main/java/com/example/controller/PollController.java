@@ -1,14 +1,11 @@
 package com.example.controller;
 
 import com.example.model.*;
-import com.example.service.PollAnswerService;
-import com.example.service.PollService;
-import com.example.service.QuestionService;
+import com.example.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,6 +19,8 @@ public class PollController {
     QuestionService questionService;
     @Autowired
     PollAnswerService pollAnswerService;
+//    @Autowired
+//    PollStatisticsService pollStatisticsService;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

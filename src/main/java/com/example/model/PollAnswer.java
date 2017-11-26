@@ -28,6 +28,9 @@ public class PollAnswer {
     @NotNull
     private List<Answer> answers;
 
+    @Column(nullable = false)
+    private Date filledDate;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     @JsonBackReference(value = "userPollAnswer")
@@ -59,6 +62,14 @@ public class PollAnswer {
 
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
+    }
+
+    public Date getFilledDate() {
+        return filledDate;
+    }
+
+    public void setFilledDate(Date filledDate) {
+        this.filledDate = filledDate;
     }
 
     public User getUser() {
