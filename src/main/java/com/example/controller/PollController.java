@@ -19,8 +19,8 @@ public class PollController {
     QuestionService questionService;
     @Autowired
     PollAnswerService pollAnswerService;
-//    @Autowired
-//    PollStatisticsService pollStatisticsService;
+    @Autowired
+    PollStatisticsService pollStatisticsService;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

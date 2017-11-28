@@ -211,8 +211,41 @@
     
 ## _view PollStatistics - localhost:8080/api/polls (method = DELETE)_
     
-    SELECT p.poll_id, p.poll_name, q.question_id, q.question_name, a.option_choice_id, o.choice_name, a.answer_text
-      FROM answer as a
-      JOIN option_choice as o ON a.option_choice_id = o.option_choice_id
-      JOIN question as q ON q.question_id = o.question_id
-      JOIN poll as p ON p.poll_id = q.poll_id;
+    CREATE OR REPLACE VIEW poll_statistics AS
+      SELECT
+        (SELECT count(*) + 1
+         FROM answer t
+         WHERE t.answer_id < a.answer_id) AS id,
+        p.poll_id,
+        p.poll_name,
+        q.question_id,
+        q.question_name,
+        a.option_choice_id,
+        o.choice_name
+      FROM answer AS a
+        JOIN option_choice AS o ON a.option_choice_id = o.option_choice_id
+        JOIN question AS q ON q.question_id = o.question_id
+        JOIN poll AS p ON p.poll_id = q.poll_id
+      ORDER BY id;
+
+## _view GeneralStatistics - localhost:8080/api/polls (method = DELETE)_
+
+    CREATE OR REPLACE VIEW general_statistics AS
+      SELECT
+        func_inc_var_session()  AS id,
+        poll_id,
+        poll_name,
+        question_name,
+        option_choice_id,
+        choice_name,
+        count(option_choice_id) AS count
+      FROM poll_statistics AS p
+      GROUP BY poll_id, poll_name, question_name, option_choice_id, choice_name;
+
+## _view MaxChoice - localhost:8080/api/polls (method = DELETE)_
+    CREATE OR REPLACE VIEW max_choice AS
+      SELECT *
+      FROM general_statistics
+      WHERE count = (SELECT max(count)
+                   FROM general_statistics AS g
+                   WHERE g.question_name = general_statistics.question_name);
