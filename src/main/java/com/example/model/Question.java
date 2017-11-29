@@ -1,13 +1,11 @@
 package com.example.model;
 
 import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 //@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "questionTypeId", scope = QuestionType.class)
@@ -46,7 +44,7 @@ public class Question {
 
     @Transient
     @Null
-    private List<GeneralStatistics> generalStatistics;
+    private List<ChoiceCount> generalStatistics;
 
     public int getQuestionId() {
         return questionId;
@@ -104,11 +102,11 @@ public class Question {
         this.type = type;
     }
 
-    public List<GeneralStatistics> getGeneralStatistics() {
+    public List<ChoiceCount> getGeneralStatistics() {
         return generalStatistics;
     }
 
-    public void setGeneralStatistics(List<GeneralStatistics> generalStatistics) {
+    public void setGeneralStatistics(List<ChoiceCount> generalStatistics) {
         this.generalStatistics = generalStatistics;
     }
 }

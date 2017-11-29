@@ -1,12 +1,11 @@
 package com.example.service;
 
 import com.example.model.MaxChoice;
-import com.example.repository.GeneralStatisticsRepository;
+import com.example.repository.ChoiceCountRepository;
 import com.example.repository.MaxChoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -15,7 +14,7 @@ public class StatisticService {
     @Autowired
     MaxChoiceRepository maxChoiceRepository;
     @Autowired
-    GeneralStatisticsRepository generalStatisticsRepository;
+    ChoiceCountRepository choiceCountRepository;
 
     public List getMaxChoice(int id) {
         List<MaxChoice> maxChoices = maxChoiceRepository.findByPollId(id);
@@ -23,10 +22,10 @@ public class StatisticService {
     }
 
     public List getGeneralStat(int id) {
-        return generalStatisticsRepository.findByPollId(id);
+        return choiceCountRepository.findByPollId(id);
     }
 
     public List findByQuestionId(int id) {
-        return generalStatisticsRepository.findByQuestionId(id);
+        return choiceCountRepository.findByQuestionId(id);
     }
 }
