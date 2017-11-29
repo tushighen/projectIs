@@ -27,9 +27,6 @@ public class Answer {
     @JsonBackReference(value = "pollAnswer")
     private PollAnswer pollAnswer;
 
-    @ManyToOne
-    @JoinColumn(name = "pollA")
-
     @Transient
     @Null
     private OptionChoice choice;

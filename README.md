@@ -249,3 +249,10 @@
       WHERE count = (SELECT max(count)
                    FROM general_statistics AS g
                    WHERE g.question_name = general_statistics.question_name);
+                   
+## _view ID increment- localhost:8080/api/polls (method = DELETE)_
+    CREATE DEFINER=`root`@`localhost` FUNCTION `func_inc_var_session`() RETURNS int(11)
+      begin
+        SET @var := IFNULL(@var,0) + 1;
+        return @var;
+      end
