@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "choiceCountq")
+@Table(name = "choiceCount")
 public class ChoiceCount {
 
     @Id
