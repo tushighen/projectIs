@@ -230,11 +230,12 @@
 
 ## _view GeneralStatistics - localhost:8080/api/polls (method = DELETE)_
 
-    CREATE OR REPLACE VIEW general_statistics AS
+    CREATE OR REPLACE VIEW choice_count AS
       SELECT
         func_inc_var_session()  AS id,
         poll_id,
         poll_name,
+        question_id,
         question_name,
         option_choice_id,
         choice_name,
