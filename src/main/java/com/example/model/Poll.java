@@ -57,6 +57,7 @@ public class Poll {
     @OneToMany(mappedBy = "poll", cascade = CascadeType.ALL)
     @JsonManagedReference(value = "pollPollAnswer")
     @Null
+    @JsonIgnore
     private List<PollAnswer> pollAnswers;
 
     @Transient

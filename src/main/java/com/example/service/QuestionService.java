@@ -13,6 +13,8 @@ public class QuestionService {
 
     @Autowired
     QuestionRepository questionRepository;
+    @Autowired
+    StatisticService statisticService;
 
     public List getAllQuestion() {
         return questionRepository.findAll();
@@ -45,6 +47,14 @@ public class QuestionService {
             question = questions.get(i);
             question.setPoll(poll);
             questionRepository.save(question);
+        }
+    }
+
+    public void setGeneralStat(List<Question> questions) {
+        Question question = new Question();
+        for (int i = 0; i < questions.size(); i++) {
+            question = questions.get(i);
+            question.setGeneralStatistics(statisticService.findByQuestionId(question.getQuestionId()));
         }
     }
 }

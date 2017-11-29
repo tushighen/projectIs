@@ -44,6 +44,10 @@ public class Question {
     @Null
     private String type;
 
+    @Transient
+    @Null
+    private List<GeneralStatistics> generalStatistics;
+
     public int getQuestionId() {
         return questionId;
     }
@@ -98,5 +102,13 @@ public class Question {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<GeneralStatistics> getGeneralStatistics() {
+        return generalStatistics;
+    }
+
+    public void setGeneralStatistics(List<GeneralStatistics> generalStatistics) {
+        this.generalStatistics = generalStatistics;
     }
 }

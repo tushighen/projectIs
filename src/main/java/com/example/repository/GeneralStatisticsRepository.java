@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface GeneralStatisticsRepository extends JpaRepository<GeneralStatistics, Integer> {
     List findByPollId(int id);
+
+    List findByQuestionId(int id);
 }

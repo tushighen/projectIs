@@ -1,5 +1,7 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,15 +13,23 @@ public class GeneralStatistics {
 
     @Id
     @Column(name = "id")
+    @JsonIgnore
     private int id;
 
     @Column(name = "poll_id")
+    @JsonIgnore
     private int pollId;
 
     @Column(name = "poll_name")
+    @JsonIgnore
     private String pollName;
 
+    @Column(name = "questionId")
+    @JsonIgnore
+    private int questionId;
+
     @Column(name = "question_name")
+    @JsonIgnore
     private String questionName;
 
     @Column(name = "option_choice_id")
@@ -53,6 +63,14 @@ public class GeneralStatistics {
 
     public void setPollName(String pollName) {
         this.pollName = pollName;
+    }
+
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
     }
 
     public String getQuestionName() {

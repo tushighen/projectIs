@@ -19,6 +19,9 @@ public class MaxChoice {
     @Column(name = "pollName")
     private String pollName;
 
+    @Column(name = "questionId")
+    private int questionId;
+
     @Column(name = "questionName")
     private String questionName;
 
@@ -53,6 +56,14 @@ public class MaxChoice {
 
     public void setPollName(String pollName) {
         this.pollName = pollName;
+    }
+
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
     }
 
     public String getQuestionName() {

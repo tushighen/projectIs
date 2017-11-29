@@ -77,6 +77,7 @@ public class PollService {
 //        for (int i = 0; i < poll.getQuestions().size(); i++) {
 //            poll.getQuestions().get(i).setQuestionType(poll.getQuestions().get(i).getQuestionType());
 //        }
+        questionService.setGeneralStat(poll.getQuestions());
 
         return poll;
     }

@@ -20,8 +20,6 @@ public class PollController {
     @Autowired
     PollAnswerService pollAnswerService;
     @Autowired
-    PollStatisticsService pollStatisticsService;
-    @Autowired
     StatisticService statisticService;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -65,5 +63,10 @@ public class PollController {
     @RequestMapping(value = "stat/{id}", method = RequestMethod.GET)
     public List getMaxChoice(@PathVariable("id") int id) {
         return statisticService.getMaxChoice(id);
+    }
+
+    @RequestMapping(value = "gen/{id}", method = RequestMethod.GET)
+    public List getGeneralStat(@PathVariable("id") int id) {
+        return statisticService.getGeneralStat(id);
     }
 }
