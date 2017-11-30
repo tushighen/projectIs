@@ -27,6 +27,9 @@ public class Poll {
     @Column
     private String pollDescription;
 
+    @Column
+    private Boolean isPrivate;
+
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy.MM.dd")
     private Date createdDate;
@@ -90,6 +93,14 @@ public class Poll {
 
     public void setPollDescription(String pollDescription) {
         this.pollDescription = pollDescription;
+    }
+
+    public Boolean getPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
     }
 
     public Date getCreatedDate() {

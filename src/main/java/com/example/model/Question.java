@@ -42,9 +42,9 @@ public class Question {
     @Null
     private String type;
 
-    @Transient
-    @Null
-    private List<ChoiceCount> generalStatistics;
+//    @Transient
+//    @Null
+//    private List<ChoiceCount> generalStatistics;
 
     public int getQuestionId() {
         return questionId;
@@ -102,11 +102,11 @@ public class Question {
         this.type = type;
     }
 
-    public List<ChoiceCount> getGeneralStatistics() {
-        return generalStatistics;
-    }
-
-    public void setGeneralStatistics(List<ChoiceCount> generalStatistics) {
-        this.generalStatistics = generalStatistics;
-    }
+//    public List<ChoiceCount> getGeneralStatistics() {
+//        return generalStatistics;
+//    }
+//
+//    public void setGeneralStatistics(List<ChoiceCount> generalStatistics) {
+//        this.generalStatistics = generalStatistics;
+//    }
 }
