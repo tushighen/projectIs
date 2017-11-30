@@ -88,11 +88,17 @@ public class PollService {
     public Poll editPoll(Poll editPoll) {
         Poll poll = pollRepository.findOne(editPoll.getPollId());
         Date date = new Date();
-        editPoll.setCreatedDate(poll.getCreatedDate());
-        editPoll.setModifiedDate(date);
-        pollRepository.save(editPoll);
-        questionService.editQuestions(editPoll.getQuestions(), editPoll.getPollId());
-        return editPoll;
+        poll.setPollName(editPoll.getPollName());
+        poll.setPollDescription(editPoll.getPollDescription());
+        poll.setStartDate(editPoll.getStartDate());
+        poll.setEndDate(editPoll.getEndDate());
+        poll.setPrivate(editPoll.getPrivate());
+//        editPoll.setCreatedDate(poll.getCreatedDate());
+        poll.setModifiedDate(date);
+        poll.setPollAnswers(null);
+        pollRepository.save(poll);
+//        questionService.editQuestions(editPoll.getQuestions(), editPoll.getPollId());
+        return poll;
     }
 
     private List removeCustom(List<Poll> polls) {

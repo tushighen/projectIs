@@ -30,7 +30,6 @@ public class Question {
     @ManyToOne
     @JoinColumn(name = "questionTypeId")
     @JsonBackReference(value = "questionType")
-    @NotNull
 //    @JsonSerialize
     private QuestionType questionType;
 
