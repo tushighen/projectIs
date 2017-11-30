@@ -19,8 +19,8 @@ public class PollController {
     QuestionService questionService;
     @Autowired
     PollAnswerService pollAnswerService;
-//    @Autowired
-//    StatisticService statisticService;
+    @Autowired
+    StatisticService statisticService;
 
     @RequestMapping(value = "", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -60,13 +60,13 @@ public class PollController {
         return pollAnswerService.addPollAnswer(addPollAnswer);
     }
 
-//    @RequestMapping(value = "stat/{id}", method = RequestMethod.GET)
-//    public List getMaxChoice(@PathVariable("id") int id) {
-//        return statisticService.getMaxChoice(id);
-//    }
-//
-//    @RequestMapping(value = "gen/{id}", method = RequestMethod.GET)
-//    public List getGeneralStat(@PathVariable("id") int id) {
-//        return statisticService.getGeneralStat(id);
-//    }
+    @RequestMapping(value = "stat/{id}", method = RequestMethod.GET)
+    public List getMaxChoice(@PathVariable("id") int id) {
+        return statisticService.getMaxChoice(id);
+    }
+
+    @RequestMapping(value = "gen/{id}", method = RequestMethod.GET)
+    public List getGeneralStat(@PathVariable("id") int id) {
+        return statisticService.getGeneralStat(id);
+    }
 }

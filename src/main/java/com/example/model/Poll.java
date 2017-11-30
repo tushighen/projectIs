@@ -27,6 +27,7 @@ public class Poll {
     @Column
     private String pollDescription;
 
+    @NotNull
     @Column
     private Boolean isPrivate;
 
