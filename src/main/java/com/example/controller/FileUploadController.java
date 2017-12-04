@@ -26,7 +26,7 @@ public class FileUploadController {
         String myFileName = random.nextInt(100000) + fileName;
 
 //        String path = "/Users/tushighen/AngularProjects/poll/src/assets/image/" + myFileName;
-        String path = "/Users/tushighen/IdeaProjects/projectIs/src/main/resources/public/" + myFileName;
+        String path = "/Users/tushighen/IdeaProjects/projectIs/src/main/webapp/images/" + myFileName;
 
         byte[] buffer = new byte[1000];
 
