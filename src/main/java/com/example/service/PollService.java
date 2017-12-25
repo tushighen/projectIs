@@ -29,6 +29,8 @@ public class PollService {
     public Poll addPoll(Poll poll) {
         Date date = new Date();
         poll.setCreatedDate(date);
+        System.out.println(poll.getStartDate());
+        System.out.println(poll.getEndDate());
         pollRepository.save(poll);
         questionService.addQuestions(poll.getQuestions(), poll.getPollId());
         return poll;

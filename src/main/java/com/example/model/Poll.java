@@ -33,20 +33,24 @@ public class Poll {
     @Column
     private Boolean isPrivate;
 
+    @NotNull
+    @Column
+    private Boolean post;
+
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdDate;
 
     @Column
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date modifiedDate;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date startDate;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "yyyy.MM.dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDate;
 
     @ManyToOne
@@ -104,6 +108,14 @@ public class Poll {
 
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public Boolean getPost() {
+        return post;
+    }
+
+    public void setPost(Boolean post) {
+        this.post = post;
     }
 
     public Date getCreatedDate() {
